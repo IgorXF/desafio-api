@@ -43,11 +43,10 @@ Siga os passos abaixo para configurar e rodar o projeto localmente.
 
 ### 1. Clonar o Repositório
 
-Clone este repositório para sua máquina local (recomenda-se a pasta `www` do Laragon).  
-Lembre-se de trocar `[SEU_USUARIO_GITHUB]` pelo seu nome de usuário.
+Clone este repositório para sua máquina local (recomenda-se a pasta `www` do Laragon).
 
 ```bash
-git clone https://github.com/[SEU_USUARIO_GITHUB]/desafio-api.git
+git clone https://github.com/IgorXF/desafio-api.git
 cd desafio-api
 ```
 
