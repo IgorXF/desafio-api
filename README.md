@@ -12,13 +12,15 @@ Este projeto foi desenvolvido como parte de um **desafio técnico**.
 - [Requisitos](#requisitos)
 - [Como Executar o Projeto](#como-executar-o-projeto)
   - [1. Clonar o Repositório](#1-clonar-o-repositório)
-  - [2. Instalar Dependências](#2-instalar-dependências)
-  - [3. Configurar Ambiente](#3-configurar-ambiente)
-  - [4. Gerar Chave da Aplicação](#4-gerar-chave-da-aplicação)
-  - [5. Criar o Banco de Dados (SQLite)](#5-criar-o-banco-de-dados-sqlite)
-  - [6. Rodar as Migrations](#6-rodar-as-migrations)
-  - [7. Popular o Banco (Seeders)](#7-popular-o-banco-seeders)
-  - [8. Iniciar o Servidor](#8-iniciar-o-servidor)
+  - [2. Verificar Versão do PHP](#2-verificar-versão-do-php)
+  - [3. Instalar Dependências](#3-instalar-dependências)
+  - [4. Configurar Ambiente](#4-configurar-ambiente)
+  - [5. Gerar Chave da Aplicação](#5-gerar-chave-da-aplicação)
+  - [6. Criar o Banco de Dados (SQLite)](#6-criar-o-banco-de-dados-sqlite)
+  - [7. Ativar Extensão pdo_sqlite](#7-ativar-extensão-pdo_sqlite)
+  - [8. Rodar as Migrations](#8-rodar-as-migrations)
+  - [9. Popular o Banco (Seeders)](#9-popular-o-banco-seeders)
+  - [10. Iniciar o Servidor](#10-iniciar-o-servidor)
 - [Documentação da API](#documentação-da-api)
   - [1. Informações do Usuário](#1-informações-do-usuário)
   - [2. Listar Planos](#2-listar-planos)
@@ -30,7 +32,7 @@ Este projeto foi desenvolvido como parte de um **desafio técnico**.
 
 ## Requisitos
 
-- **PHP** (versão 8.3+)
+- **PHP** (versão 8.2+)
 - **Composer** (versão 2+)
 - Um ambiente de desenvolvimento local (recomenda-se **Laragon** para Windows)
 - Uma ferramenta de teste de API (como **Postman**)
@@ -43,7 +45,7 @@ Siga os passos abaixo para configurar e rodar o projeto localmente.
 
 ### 1. Clonar o Repositório
 
-Clone este repositório para sua máquina local (recomenda-se a pasta `www` do Laragon).
+Clone este repositório para sua máquina local (recomenda-se a pasta `www` do Laragon).  
 
 ```bash
 git clone https://github.com/IgorXF/desafio-api.git
@@ -52,7 +54,23 @@ cd desafio-api
 
 ---
 
-### 2. Instalar Dependências
+### 2. Verificar Versão do PHP
+
+Este projeto usa Laravel 12 e requer PHP 8.2 ou superior.
+
+No terminal do seu ambiente (como o Laragon), rode:
+
+```bash
+php -v
+```
+
+Se a versão for inferior a 8.2 (ex: 8.1.x), você deve atualizá-la.
+
+No Laragon: Você pode trocar a versão facilmente clicando com o botão direito > PHP > Versão e selecionando uma versão 8.2 ou 8.3+. (Talvez seja necessário baixar o binário do PHP 8.3+ no site oficial e extrair na pasta `C:\laragon\bin\php`).
+
+---
+
+### 3. Instalar Dependências
 
 Instale as dependências do PHP usando o Composer:
 
@@ -62,7 +80,7 @@ composer install
 
 ---
 
-### 3. Configurar Ambiente
+### 4. Configurar Ambiente
 
 O Laravel usa um arquivo `.env` para configurações.  
 O projeto já vem configurado para usar **SQLite** por padrão.
@@ -75,7 +93,7 @@ copy .env.example .env
 
 ---
 
-### 4. Gerar Chave da Aplicação
+### 5. Gerar Chave da Aplicação
 
 Gere a chave de segurança única do Laravel:
 
@@ -85,7 +103,7 @@ php artisan key:generate
 
 ---
 
-### 5. Criar o Banco de Dados (SQLite)
+### 6. Criar o Banco de Dados (SQLite)
 
 Crie o arquivo de banco de dados SQLite vazio na pasta `database`:
 
@@ -95,7 +113,20 @@ touch database/database.sqlite
 
 ---
 
-### 6. Rodar as Migrations
+### 7. Ativar Extensão pdo_sqlite
+
+Para o Laravel se comunicar com o banco SQLite, a extensão `pdo_sqlite` do PHP deve estar ativada.
+
+No Laragon:
+
+- Clique em "Parar".
+- Clique com o botão direito na janela do Laragon.
+- Vá em PHP > Extensões > e clique em `pdo_sqlite` (um ✓ deve aparecer).
+- Clique em "Iniciar".
+
+---
+
+### 8. Rodar as Migrations
 
 Execute as migrations para criar as tabelas:
 
@@ -105,7 +136,7 @@ php artisan migrate
 
 ---
 
-### 7. Popular o Banco (Seeders)
+### 9. Popular o Banco (Seeders)
 
 Popule o banco com dados de exemplo (usuário fixo e 3 planos):
 
@@ -115,7 +146,7 @@ php artisan db:seed
 
 ---
 
-### 8. Iniciar o Servidor
+### 10. Iniciar o Servidor
 
 Inicie o servidor de desenvolvimento do Laravel:
 
